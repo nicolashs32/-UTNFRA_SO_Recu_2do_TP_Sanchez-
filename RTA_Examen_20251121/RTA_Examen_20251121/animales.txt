@@ -1,0 +1,6 @@
+
+20251125 - animal: pato - habitat: TO
+20251125 - animal: perro - habitat: TM
+20251125 - animal: gallina - habitat: TO
+20251125 - animal: ballena - habitat: AG
+20251125 - animal: gato - habitat: TM
