@@ -1,4 +1,5 @@
 # Comandos usados para resolver el Punto A
+
 fdisk /dev/sdd
 fdisk /dev/sdc
 pvcreate /dev/sdc1

@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  web:
+    image: nsanchez/web2-nsanchez:latest
+    ports:
+      - "81:80"
+    volumes:
+      - ./web/file:/usr/share/nginx/html/file
+
