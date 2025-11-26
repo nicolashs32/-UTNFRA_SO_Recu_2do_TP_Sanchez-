@@ -1,0 +1,15 @@
+---
+# tasks file for Sudoers_sanchez
+---
+# Rol 4: Sudoers_sanchez
+
+- name: Agregar GProfesores al sudoers sin password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    # La línea indica: el grupo %GProfesores puede ejecutar TODO, sin clave.
+    line: "%GProfesores ALL=(ALL) NOPASSWD: ALL"
+    # El validador para evitar bloquear el acceso sudo si hay un error.
+    validate: "visudo -cf %s"
+

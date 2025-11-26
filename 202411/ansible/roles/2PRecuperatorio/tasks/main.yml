@@ -1,8 +1,28 @@
 ---
 # tasks file for 2PRecuperatorio
 
- - name: "Rol: 2PRecuperatorio"
-   debug:
-     msg: "Inicio de tareas dentro del Rol: 2PRecuperatorio"
+ # Tareas para crear usuarios y grupos
 
+- name: "Crear grupo GProfesores"
+  ansible.builtin.group:
+    name: "GProfesores"
+    state: present
 
+- name: "Crear grupo GAlumnos"
+  ansible.builtin.group:
+    name: "GAlumnos"
+    state: present
+
+- name: "Crear usuario profesor"
+  ansible.builtin.user:
+    name: "profesor"
+    group: "GProfesores"
+    create_home: yes
+    state: present
+
+- name: "Crear usuario alumno"
+  ansible.builtin.user:
+    name: "alumno"
+    group: "GAlumnos"
+    create_home: yes
+    state: present

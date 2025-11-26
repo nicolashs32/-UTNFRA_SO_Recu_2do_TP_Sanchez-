@@ -1,0 +1,18 @@
+---
+# tasks file for Crea_Carpetas_sanchez
+---
+# Rol 2: Crea_Carpetas_sanchez
+# Crear /UTN con las subcarpetas Alumno y Profesor
+
+- name: Crear estructura /UTN con subcarpetas Alumno y Profesor
+  ansible.builtin.file:
+    path: "/UTN/{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+    recurse: yes
+  with_items:
+    - "Alumno"
+    - "Profesor"
+
