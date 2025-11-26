@@ -1,0 +1,370 @@
+cd
+sudo apt install git
+git --version
+ssh-keygen
+pwd
+cd .ssh/
+ls -la
+cat id_rsa.pub
+cd
+git clone git@github.com:nicolashs32/-UTNFRA_SO_Recu_2do_TP_Sanchez-.git
+ls -la
+git clone https://github.com/sofiasartori/UTN-FRA_SO_Examenes.git
+ls -la
+./UTN-FRA_SO_Examenes/202411/script_Precondicion.sh
+source ~/.bashrc
+ls -la
+sudo install tree
+tree --version
+sudo apt update
+sudo apt install wget gpg
+UBUNTU_CODENAME=jammy
+wget -O- "https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=get&search=0x6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367" | sudo gpg --dearmour -o /usr/share/keyrings/ansible-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/ansible-archive-keyring.gpg] http://ppa.launchpad.net/ansible/ansible/ubuntu $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/ansible.list
+sudo apt update && sudo apt install ansible
+ansible --version
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo docker run hello-world
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo rm /etc/apt/sources.list.d/docker.sources
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: jammy
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+sudo rm /etc/apt/sources.list.d/docker.sources 2>/dev/null
+sudo rm /etc/apt/sources.list.d/docker.list 2>/dev/null
+cd
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo docker run hello-world
+tree --version
+sudo apt install tree
+tree --version
+sudo fdisk -l
+sudo fdisk /dev/sdd
+sudo fdisk -l /dev/sdd
+sudo fdisk /dev/sdc
+sudo fdisk -l /dev/sdc
+sudo pvcreate /dev/sdd2
+sudo pvcreate /dev/sdc1
+sudo pvdisplay
+sudo vgcreate vg_datos /dev/sdc1 /dev/sdd2
+sudo vgdisplay vg_datos
+sudo lvcreate -L 10M -n lv_docker vg_datos
+sudo lvcreate -L 1.5G -n lv_multimedia vg_datos
+sudo lvdisplay
+sudo mkfs.ext4 /dev/vg_datos/lv_multimedia
+sudo mkfs.ext4 /dev/vg_datos/lv_docker
+sudo mkswap /dev/sdd1
+sudo swapon /dev/sdd1
+sudo swapon --show
+sudo mkdir -p /Multimedia
+sudo mkdir -p /var/lib/docker
+sudo mount /dev/vg_datos/lv_multimedia /Multimedia
+sudo mount /dev/vg_datos/lv_docker /var/lib/docker
+df -h
+sudo blkid
+echo "UUID=de681f87-b4bd-46d3-aec6-3105b94b3fde  /Multimedia      ext4    defaults        0 2" | sudo tee -a /etc/fstab
+echo "UUID=ae0c7af2-0f6d-40e0-92a8-c2b50df841e5  /var/lib/docker  ext4    defaults        0 2" | sudo tee -a /etc/fstab
+echo "UUID=4dc69403-3dc7-43c9-8f03-07016e0581a0  none  swap  sw  0 0" | sudo tee -a /etc/fstab
+sudo mount -a
+df -h
+swapon --show
+cd ~/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+pwd
+git add .
+git commit -m "termine punto A"
+git config --global user.name "nicolashs32"
+git config --global user.email "nicolashs32.32@gmail.com"
+git commit -m "Punto A completo"
+cd ~/ -UTNFRA_SO_Recu_2do_TP_Sanchez-
+mkdir RTA_Examen_20251121
+cd ~/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+cd RTA_Examen_20251121
+echo "# Comandos usados para resolver el Punto A" > Punto_A.sh
+echo "fdisk /dev/sdd" >> Punto_A.sh
+echo "fdisk /dev/sdc" >> Punto_A.sh
+echo "pvcreate /dev/sdc1" >> Punto_A.sh
+echo "pvcreate /dev/sdd2" >> Punto_A.sh
+echo "vgcreate vg_datos /dev/sdc1 /dev/sdd2" >> Punto_A.sh
+echo "lvcreate -L 12M -n lv_docker vg_datos" >> Punto_A.sh
+echo "lvcreate -L 1.5G -n lv_multimedia vg_datos" >> Punto_A.sh
+echo "mkfs.ext4 /dev/vg_datos/lv_docker" >> Punto_A.sh
+echo "mkfs.ext4 /dev/vg_datos/lv_multimedia" >> Punto_A.sh
+echo "mkswap /dev/sdd1" >> Punto_A.sh
+echo "swapon /dev/sdd1" >> Punto_A.sh
+echo "mount /dev/vg_datos/lv_docker /var/lib/docker" >> Punto_A.sh
+echo "mount /dev/vg_datos/lv_multimedia /Multimedia" >> Punto_A.sh
+ls -l
+git add .
+git commit -m "Punto A completo"
+git push origin main
+sudo touch /usr/local/bin/sanchez_clasif_animales.sh
+sudo chmod +x /usr/local/bin/sanchez_clasif_animales.sh
+echo '#!/bin/bash' | sudo tee /usr/local/bin/sanchez_clasif_animales.sh
+sudo vim /usr/local/bin/sanchez_clasif_animales.sh
+ls -l /usr/local/bin/sanchez_clasif_animales.sh
+bash -n /usr/local/bin/sanchez_clasif_animales.sh
+/home/nsanchez/UTN-FRA_SO_Examenes/202411/bash_script/Lista_Animales.txt
+ls -l
+/home/nsanchez/UTN-FRA_SO_Examenes/202411/bash_script/Lista_Animales.txt
+ls ~/UTN-FRA_SO_Examenes/202411/bash_script/
+sudo /usr/local/bin/sanchez_clasif_animales.sh ~/UTN-FRA_SO_Examenes/202411/bash_script/Lista_Animales.txt
+tree /tmp/Animales
+cat /tmp/animales.txt
+sudo vim /usr/local/bin/sanchez_clasif_animales.sh
+ls -l
+pwd
+cp /usr/local/bin/sanchez_clasif_animales.sh /home/nsanchez/RTA_Examen_20251121/
+ls -l /home/nsanchez/RTA_Examen_20251121/
+vim /home/nsanchez/RTA_Examen_20251121/Punto_B.sh
+ls -l /home/nsanchez/RTA_Examen_20251121/
+cp /tmp/animales.txt /home/nsanchez/RTA_Examen_20251121/
+cp -R /tmp/Animales /home/nsanchez/RTA_Examen_20251121/
+tree /home/nsanchez/RTA_Examen_20251121/
+sudo vgs
+sudo lvs
+sudo lsblk -f
+sudo swapon --show
+cat /home/nsanchez/RTA_Examen_20251121/Punto_A.sh
+cat /home/nsanchez/RTA_Examen_20251121/Punto_B.sh
+ls -l /home/nsanchez/RTA_Examen_20251121/Punto_A.sh
+vim /home/nsanchez/RTA_Examen_20251121/Punto_A.sh
+cat /home/nsanchez/RTA_Examen_20251121/Punto_A.sh
+vim /home/nsanchez/RTA_Examen_20251121/Punto_B.sh
+cat /home/nsanchez/RTA_Examen_20251121/sanchez_clasif_animales.sh
+vim /home/nsanchez/RTA_Examen_20251121/Punto_B.sh
+cat /home/nsanchez/RTA_Examen_20251121/sanchez_clasif_animales.sh
+cat /home/nsanchez/RTA_Examen_20251121/Punto_B.sh
+vim /home/nsanchez/RTA_Examen_20251121/Punto_B.sh
+cat /home/nsanchez/RTA_Examen_20251121/Punto_B.sh
+ls -l /home/nsanchez/RTA_Examen_20251121/
+cd /home/nsanchez/RTA_Examen_20251121/
+ls -a
+git status
+git push -u origin master
+ls -l ~/
+cd ~/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+ls -a
+cp -R /home/nsanchez/RTA_Examen_20251121 ./RTA_Examen_20251121
+ls -l
+git status
+git add RTA_Examen_20251121
+git commit -m "Agrego Punto A y Punto B completos + estructura de animales"
+git push
+ls ~/UTN-FRA_SO_Examenes/202411/docker/
+ls -l
+id nsanchez
+sudo grep nsanchez /etc/shadow
+cd ~/UTN-FRA_SO_Examenes/202411/docker/
+tree ~/UTN-FRA_SO_Examenes/202411/docker/
+nano ~/UTN-FRA_SO_Examenes/202411/docker/web/index.html
+cd ~/UTN-FRA_SO_Examenes/202411/docker/
+cat ~/UTN-FRA_SO_Examenes/202411/docker/web/index.html
+nano ~/UTN-FRA_SO_Examenes/202411/docker/web/file/info.txt
+cat ~/UTN-FRA_SO_Examenes/202411/docker/web/file/info.txt
+nano ~/UTN-FRA_SO_Examenes/202411/docker/docker-compose.yml
+cat ~/UTN-FRA_SO_Examenes/202411/docker/docker-compose.yml
+nano Dockerfile
+cat Dockerfile
+nano ~/UTN-FRA_SO_Examenes/202411/docker/web/index.html
+cat ~/UTN-FRA_SO_Examenes/202411/docker/web/index.html
+nano ~/UTN-FRA_SO_Examenes/202411/docker/web/index.html
+cat ~/UTN-FRA_SO_Examenes/202411/docker/web/index.html
+> ~/UTN-FRA_SO_Examenes/202411/docker/web/index.html
+cat ~/UTN-FRA_SO_Examenes/202411/docker/web/index.html
+nano ~/UTN-FRA_SO_Examenes/202411/docker/web/index.html
+cat ~/UTN-FRA_SO_Examenes/202411/docker/web/index.html
+cd ~/UTN-FRA_SO_Examenes/202411/docker
+pwd
+ls
+sudo docker build -t nsanchez/web2-nsanchez:latest .
+sudo docker login
+sudo docker push nsanchez/web2-nsanchez:latest
+sudo docker images
+sudo docker tag nsanchez/web2-nsanchez:latest nicolashs32/web2-nsanchez:latest
+sudo docker push nicolashs32/web2-nsanchez:latest
+nsanchez@recuperatorio:~/UTN-FRA_SO_Examenes/202411/docker$ sudo docker images
+IMAGE                           ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest              f7931603f70e       20.3kB         3.96kB
+nsanchez/web2-nsanchez:latest   c697fa5d978e        225MB         59.8MB
+nsanchez@recuperatorio:~/UTN-FRA_SO_Examenes/202411/docker$ sudo docker tag nsanchez/web2-nsanchez:latest nicolashs32/web2-nsanchez:latest
+nsanchez@recuperatorio:~/UTN-FRA_SO_Examenes/202411/docker$ sudo docker push nicolashs32/web2-nsanchez:latest
+The push refers to repository [docker.io/nicolashs32/web2-nsanchez]
+459f92d38f61: Pushed
+6531eb29fa89: Pushed
+b5feb73171bf: Pushed
+108ab8292820: Pushed
+192e2451f875: Pushed
+0e4bc2bd6656: Pushed
+53d743880af4: Pushed
+77fa2eb06317: Pushed
+de57a609c9d5: Pushed
+latest: digest: sha256:c697fa5d978e8a1d92d9837c2191622305b7eba28074777b75d4f351e18e5be7 size: 856
+nsanchez@recuperatorio:~/UTN-FRA_SO_Examenes/202411/docker$
+sudo docker compose up -d
+sudo docker ps
+ip a
+cd RTA_Examen_20251121
+cd ~
+cd RTA_Examen_20251121
+ls -l
+vim Punto_C.sh
+cat Punto_C.sh
+vim Punto_C.sh
+cat Punto_C.sh
+chmod +x /home/nsanchez/RTA_Examen_20251121/Punto_C.sh
+cd ~/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+git add .
+git commit -m "Punto C completo"
+cd /home/nsanchez/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+tree -a /home/nsanchez/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+cp -r /home/nsanchez/UTN-FRA_SO_Examenes/202411 /home/nsanchez/-UTNFRA_SO_Recu_2do_TP_Sanchez-/
+pwd
+ls
+tree -a 
+│   │   │   └── 42257b6619ff515281ffd7d6c325b2de6becff
+│   │   ├── 7a
+│   │   │   └── e8e228659f7d0bb975c628ac1a4f402322f2ab
+│   │   ├── 86
+│   │   │   └── 0410aa328cfd0802c9ee02030e30cb6434f8b6
+│   │   ├── 8e
+│   │   │   ├── 06cfee47a9ebe9605834b363905e1e084ed67f
+│   │   │   └── c81a71adf89b1ab2eea3e2558f04f12db0ae00
+│   │   ├── 9f
+│   │   │   └── dfbf7a4e344b537262e39bfaa6ed12b75b8200
+│   │   ├── a0
+│   │   │   └── 847a28051e948aac5606042b7d0ecdb779062b
+cd /home/nsanchez/-UTNFRA_SO_Recu_2do_TP_Sanchez-/RTA_Examen_20251121
+ls
+rm Punto_A.sh
+mv RTA_Examen_20251121/* .
+cd /home/nsanchez/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+git status
+git add -A
+git commit -m "Punto C listo"
+git push
+nano ~/RTA_Examen_20251121/Punto_C.sh
+git add -f RTA_Examen_20251121/Punto_C.sh
+git commit -m "Agrego Punto_C.sh"
+git push
+cat ~/RTA_Examen_20251121/Punto_C.sh
+rm -rf RTA_Examen_20251121/RTA_Examen_20251121
+git status
+git add RTA_Examen_20251121/Punto_C.sh
+git commit -m "Agrego Punto C correcto"
+cat ~/RTA_Examen_20251121/Punto_C.sh
+git ls-files | grep Punto_C.sh
+cp ~/RTA_Examen_20251121/Punto_C.sh RTA_Examen_20251121/Punto_C.sh
+cat RTA_Examen_20251121/Punto_C.sh
+git add RTA_Examen_20251121/Punto_C.sh
+git commit -m "Punto C terminado "
+git push
+cd ~/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+cd 202411
+mkdir -p ansible/roles
+cp -R _checks/roles/2PRecuperatorio ansible/roles/
+tree ansible
+tree -L 2 202411/ansible/roles
+tree -L 2 ansible/roles
+nano ansible/roles/2PRecuperatorio/tasks/main.yml
+cat ansible/roles/2PRecuperatorio/tasks/main.yml
+cd ansible/roles
+ansible-galaxy init Crea_Carpetas_sanchez
+tree Crea_Carpetas_sanchez -L 2
+cd ~/UTN-FRA_SO_Recu_2do_TP_Sanchez/202411/ansible/roles/Crea_Carpetas_sanchez/tasks
+cd ~/UTN-FRA_SO_Recu_2do_TP_Sanchez/202411/ansible/roles
+cd ~/UTN-FRA_SO_Recu_2do_TP_Sanchez/202411/
+cd ~/UTN-FRA_SO_Recu_2do_TP_Sanchez/202411
+cd ~
+ls
+cd ~/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+ls
+cd 202411
+ls
+cd ansible
+ls
+cd roles
+ls
+cd Crea_Carpetas_sanchez/tasks
+ls
+cat ~/UTNFRA_SO_Recu_2do_TP_Sanchez/202411/ansible/roles/Crea_Carpetas_sanchez/tasks/main.yml
+cat main.yml
+nano main.yml
+cat main.yml
+ansible-galaxy init Cambia_Propiedad_sanchez
+nano Cambia_Propiedad_sanchez/tasks/main.yml
+ansible-galaxy init Sudoers_sanchez
+nano Sudoers_sanchez/tasks/main.yml
+cd ~/UTNFRA_SO_Recu_2do_TP_Sanchez/202411/ansible/
+cd "~/-UTNFRA_SO_Recu_2do_TP_Sanchez-/202411/ansible"
+cd ../../../../
+pwd
+ls -l
+cd ../../../../
+cd ~
+cd ".-UTNFRA_SO_Recu_2do_TP_Sanchez-/202411/ansible"
+cd ~/UTN-FRA_SO_Recu_2do_TP_Sanchez/202411/ansible
+cd ~/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+cd 202411
+cd ansible
+pwd
+ls -l
+ls -l inventory/
+ansible-playbook playbook.yml -i inventory/hosts --ask-become-pass
+nano inventory/hosts
+ansible-playbook playbook.yml -i inventory/hosts --ask-become-pass
+sudo whoami
+ansible-playbook playbook.yml -i inventory/hosts --ask-become-pass
+nano inventory/hosts
+ansible-playbook playbook.yml -i inventory/hosts --ask-become-pass
+sudo ansible-playbook playbook.yml -i inventory/hosts
+nano ../Punto_D.sh
+cd ..
+git add .
+git commit -m "Termine Punto D"
+git push
+cd ~/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+git add RTA_Examen_20251121/Punto_D.sh
+git add .
+git commit -m "Agrego Punto_D.sh completo"
+mv Punto_D.sh RTA_Examen_20251121/
+mv 202411/Punto_D.sh 202411/RTA_Examen_20251121/
+cd ~/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+mv 202411/Punto_D.sh RTA_Examen_20251121/
+ls -l RTA_Examen_20251121/ | grep Punto_D
+git add RTA_Examen_20251121/Punto_D.sh
+git commit -m "Muevo Punto_D.sh a la carpeta correcta (RTA_Examen_20251121)"
+git push
+history | grep animales
+cd ~/RTA_Examen_20251121
+ls -l
+nano Punto_B.sh
+chmod +x Punto_B.sh
+git add Punto_B.sh
+cd ~/-UTNFRA_SO_Recu_2do_TP_Sanchez-
+git add RTA_Examen_20251121/Punto_B.sh
+git commit -m "Corrijo Punto_B.sh"
+git push
+git ls-files | grep RTA_Examen
+history -a
+cp ~/.bash_history ~/ -UTNFRA_SO_Recu_2do_TP_Sanchez-/
+history -a
+cp ~/.bash_history "202411/RTA_Examen_20251121/bash_history_nsanchez.txt"
+ls -l 202411/
+mkdir -p 202411/RTA_Examen_20251121
